@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui_todo_list.Pages.Login.SignIn"
+             Title="SignIn">
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10"> 
+
+        <StackLayout Orientation="Vertical" VerticalOptions="Center">
+            <!--TOP-->
+            <Label
+                Text="ToDoooooooooo"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                TextColor="red"
+                HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+        
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <!--Middle-->
+            <Entry x:Name="txtEmail" Placeholder="Email" Margin="10"/>
+
+            <Entry x:Name="txtPassword" IsPassword="True" Placeholder="Password" Text="" Margin="10"/>
+
+            <Button Text="Sign In" Margin="10" Clicked="OnSignInClicked"/>
+
+            <Button Text="Register" BackgroundColor="Blue" Margin="10" Clicked="OnRegisterClicked"/>
+
+        </StackLayout>
+
+        <StackLayout Padding="20">
+            <!--Bottom-->
+            <Button Text="Forget password" BackgroundColor="Aqua" TextColor="Red" Clicked="OnForgetPasswordClicked"/>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>
