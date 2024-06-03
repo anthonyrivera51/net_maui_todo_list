@@ -9,6 +9,10 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <x:String x:Key="BrandsFontFamily">BrandsFontFamily</x:String>
+            <x:String x:Key="RegularFontFamily">RegularFontFamily</x:String>
+            <x:String x:Key="SolidFontFamily">SolidFontFamily</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

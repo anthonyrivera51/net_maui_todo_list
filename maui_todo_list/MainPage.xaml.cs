@@ -15,6 +15,7 @@ public partial class MainPage : ContentPage
     private async void OnCounterClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync($"//{nameof(SettingsPage)}");
+        //await Navigation.PushAsync(new SettingsPage());
     }
 
     private async void NavigationClientPage(object sender, EventArgs e)

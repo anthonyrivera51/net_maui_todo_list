@@ -3,7 +3,9 @@ using GraphQL;
 using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.Newtonsoft;
+using maui_todo_list.Model;
 using maui_todo_list.Pages.Dashboard;
+using Newtonsoft.Json;
 
 namespace maui_todo_list.Pages.Login;
 
@@ -15,48 +17,82 @@ public partial class SignIn : ContentPage
     {
         InitializeComponent();
 
+        ValidateSession();
+
         _graphQLHttpClient = new GraphQLHttpClient(new GraphQLHttpClientOptions
         {
             EndPoint = new Uri("https://cjjfg4vl-3002.use.devtunnels.ms/graphql")
         }, new NewtonsoftJsonSerializer());
     }
 
+    private async void ValidateSession()
+    {
+        string userDetailsStr = Preferences.Get(nameof(App.UserAgents), "");
+        if (string.IsNullOrWhiteSpace(userDetailsStr))
+        {
+        }
+        else
+        {
+            await Shell.Current.GoToAsync(nameof(Dashboard));
+        }
+    }
+
     private async void OnSignInClicked(object sender, EventArgs e)
     {
-        if (txtEmail.Text?.Length == 0 || txtPassword.Text?.Length == 0)
+        if (txtEmail.Text?.Length == null || txtPassword.Text?.Length == null)
         {
             await DisplayAlert("Alert", "Email or Password cannot be empty", "Retry");
             return;
         }
-        await LoadData();
+        await LoadData(txtEmail.Text, txtPassword.Text);
         await Shell.Current.GoToAsync(nameof(Dashboard));
         //Application.Current.MainPage = new MainPage(); // = new Dashboard();
 
     }
 
-    private async Task LoadData()
+    private async Task LoadData(string email, string password)
     {
-        // Define la consulta GraphQL
-        var request = new GraphQLRequest
+        try
         {
-            Query = @"mutation Signin($signinInput: SigninInput!) { signin(signinInput: $signinInput) { token user { name identificationNumber id email }}}",
-            Variables = new
+            // Define la consulta GraphQL
+            var request = new GraphQLRequest
             {
-                signinInput = new
+                Query = @"mutation Signin($signinInput: SigninInput!) { signin(signinInput: $signinInput) { token user { name identificationNumber id email } } }",
+                Variables = new
                 {
-                    email = "amolina@gmail.com",
-                    password = "123456789"
+                    SigninInput = new
+                    {
+                        email = email, //"amolina@gmail.com",
+                        password = password, // "123456789"
+                    }
                 }
-            }
 
-        };
+            };
 
-        // Ejecuta la consulta
-        var response = await _graphQLHttpClient.SendMutationAsync<dynamic>(request);
-        var datos = response.Data.signin;
+            // Ejecuta la consulta
+            var response = await _graphQLHttpClient.SendMutationAsync<dynamic>(request);
+            var datos = response.Data.signin;
 
-        // Actualiza la UI con los datos
-        BindingContext = datos;
+            Console.WriteLine($"{datos.user}");
+
+            Users users = new Users();
+            users.token = datos.token;
+            users.name = datos.user.name;
+            users.identificationNumber = datos.user.identificationNumber;
+            users.id = datos.user.id;
+            users.email = datos.user.email;
+
+            App.UserAgents = users;
+            string userInJSON = JsonConvert.SerializeObject(users);
+            Preferences.Set(nameof(App.UserAgents), userInJSON);
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"{ex.Message}");
+        }
+
+
     }
 
     private async void OnRegisterClicked(object sender, EventArgs e)

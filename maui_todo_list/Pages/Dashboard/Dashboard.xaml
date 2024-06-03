@@ -2,9 +2,103 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="maui_todo_list.Pages.Dashboard.Dashboard"
-             Shell.NavBarIsVisible="False"
-             Title="Dashboard">
-    <Grid>
+             xmlns:local="clr-namespace:maui_todo_list.Resources.Fonts"
+             xmlns:ct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="Rotation" Value="180" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontFamily" Value="{StaticResource SolidFontFamily}" /> 
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+     <Grid RowDefinitions="2*, 8*" RowSpacing="0">
+         <Grid Grid.Row="0" BackgroundColor="DarkGoldenrod">
+            <Image HorizontalOptions="StartAndExpand"
+                Source="dotnet_bot.pgn"
+                   WidthRequest="100"
+                   HeightRequest="100"
+                   Margin="30, 0"/>
+            <Label x:Name="txtName"
+                    FontSize="Large"
+                    TextColor="White"
+                    Grid.Row="1" 
+                    Grid.Column="1"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center" />
+        </Grid>
+         <Grid Grid.Row="1" BackgroundColor="DarkCyan">
+             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Start" BackgroundColor="#49c175">
+                <!--<CollectionView  VerticalScrollBarVisibility="Never"
+                                    HeightRequest="{OnPlatform Android='340', iOS='515'}" 
+                                    BackgroundColor="White" 
+                                    ItemsSource="{Binding items}">
+                    <CollectionView.ItemTemplate>
+                                <DataTemplate>  
+                                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="120,*,Auto" Padding="30,20,20,10" BackgroundColor="White">
+                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding By}" Grid.ColumnSpan="2" FontSize="13" Padding="10,10,0,0" TextColor="#9a9bab" FontAttributes="Bold"/>
+                                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Title}" MaxLines="3" Padding="10,0,0,10" FontSize="17" FontAttributes="Bold"/>
+                                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Price}" Padding="10,0,0,0" FontAttributes="Bold" FontSize="20" TextColor="#49c175"/> 
+                                            <Button Grid.Row="1" Grid.Column="3" FontSize="13" VerticalOptions="Center" Margin="0,0,10,0" BackgroundColor="#0c0e34" Text="{Binding Quantity}" TextColor="White" HorizontalOptions="End" HeightRequest="40" WidthRequest="40" CornerRadius="20" />
+                                    </Grid>
+                                </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>-->
+             </StackLayout> 
+         </Grid>
+
+         <Grid Grid.RowSpan="2">
+             <Frame CornerRadius="30"
+                    Padding="15"
+                    Margin="0,0,15,40"
+                    HorizontalOptions="End"
+                    VerticalOptions="End">
+
+                 <ct:Expander Rotation="180">
+
+                     <ct:Expander.Header>
+                         <Image
+                             Source="plus_pequeno.png"
+                             WidthRequest="25"
+                             HeightRequest="25">
+
+                             <Image.Triggers>
+                                 <DataTrigger
+                                     Binding="{Binding Source={RelativeSource AncestorType={x:Type ct:Expander}}, Path=IsExpanded}"
+                                                       TargetType="Image" Value="True">
+                                        <Setter Property="Source" Value="error.png}" />
+                                </DataTrigger>
+                             </Image.Triggers>
+
+                         </Image>
+                    </ct:Expander.Header>
+
+                     <StackLayout>
+                         <ImageButton Source="cerrar_sesion.png"
+                                      Clicked="ImageButton_Clicked"
+                                      WidthRequest="25"
+                                      HeightRequest="25"
+                                      Margin="0, 20"/>
+
+                         <ImageButton Source="agregar_usuario.png"
+                                      Clicked="ImageButton_Clicked_1"
+                                      WidthRequest="25"
+                                      HeightRequest="25"/>
+
+                    </StackLayout>
+
+                 </ct:Expander>
+
+             </Frame>
+         </Grid>
+
+     </Grid>
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" /> 
         </Grid.RowDefinitions>
@@ -45,12 +139,12 @@
             </VerticalStackLayout>
         </ScrollView>
     
-        <!--<Button Grid.Row="0" Text="+" BorderColor="#2b3c3c" BorderWidth="1" FontAttributes="Bold" BackgroundColor="#4ba862" TextColor="White" HorizontalOptions="End" WidthRequest="160" HeightRequest="70" Margin="0,0,20,22" VerticalOptions="End" Clicked="OnCounterClicked"/>-->
+        <Button Grid.Row="0" Text="+" BorderColor="#2b3c3c" BorderWidth="1" FontAttributes="Bold" BackgroundColor="#4ba862" TextColor="White" HorizontalOptions="End" WidthRequest="160" HeightRequest="70" Margin="0,0,20,22" VerticalOptions="End" Clicked="OnCounterClicked"/>
       <Frame Grid.Row="0" BackgroundColor="#fdc912" VerticalOptions="End" HorizontalOptions="End" CornerRadius="30" TranslationY="-30" TranslationX="-30">
            <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto" HorizontalOptions="CenterAndExpand">
                 <Image Grid.Column="0" Source="Basket" HeightRequest="34" WidthRequest="34" VerticalOptions="Center" Aspect="Fill"/>
                 <Button Grid.Column="1" Text="+"  FontAttributes="Bold" FontSize="9" TextColor="Black" BackgroundColor="White" VerticalOptions="FillAndExpand" HeightRequest="34" WidthRequest="34" CornerRadius="17" Clicked="OnCounterClicked" />
            </Grid>
        </Frame>
-    </Grid>
+    </Grid>-->
 </ContentPage>

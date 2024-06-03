@@ -2,34 +2,57 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="maui_todo_list.Pages.Login.SignIn"
-             Title="SignIn">
-    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10"> 
+             Title="SignIn"
+             xmlns:local="clr-namespace:maui_todo_list.Utils"
+            Shell.NavBarIsVisible="False"
+            Background="#24314D">
+    <StackLayout VerticalOptions="StartAndExpand"> 
 
-        <StackLayout Orientation="Vertical" VerticalOptions="Center">
-            <!--TOP-->
-            <Label
-                Text="ToDoooooooooo"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                TextColor="red"
-                HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
+        <!--TOP-->
+        <Image
+            Source="dotnet_bot.png"
+            SemanticProperties.Description="Cute dot net bot waving hi to you!"
+            HeightRequest="200"
+            WidthRequest="250"
+            Margin="0,50,0,50"/>
+
+        <HorizontalStackLayout HeightRequest="50"
+                               BackgroundColor="#22000000"
+                               Margin="40, 0, 40, 20">
+            <Frame BackgroundColor="white"
+                   BorderColor="#000000"
+                   WidthRequest="50"
+                   HeightRequest="50"
+                   Padding="10">
+                <Image Source="icon_envelope.png" />
+            </Frame>
+            <local:BorderlessEntry Placeholder="username"
+                                   PlaceholderColor="White"
+                                   x:Name="txtEmail"
+                                   TextColor="white"/>
+        </HorizontalStackLayout>
+
         
-        <StackLayout VerticalOptions="CenterAndExpand">
-            <!--Middle-->
-            <Entry x:Name="txtEmail" Placeholder="Email" Margin="10"/>
-
-            <Entry x:Name="txtPassword" IsPassword="True" Placeholder="Password" Text="" Margin="10"/>
-
-            <Button Text="Sign In" Margin="10" Clicked="OnSignInClicked"/>
-
-            <Button Text="Register" BackgroundColor="Blue" Margin="10" Clicked="OnRegisterClicked"/>
-
-        </StackLayout>
+        <HorizontalStackLayout HeightRequest="50"
+                               BackgroundColor="#22000000"
+                               Margin="40, 0,40,20">
+            <Frame BackgroundColor="white"
+                   BorderColor="#000000"
+                   WidthRequest="50"
+                   HeightRequest="50"
+                   Padding="10">
+                <Image Source="icon_lock.png" />
+            </Frame>
+            <local:BorderlessEntry Placeholder="password"
+                                   PlaceholderColor="White"
+                                   TextColor="White"
+                                   x:Name="txtPassword"
+                                   IsPassword="True"/>
+        </HorizontalStackLayout>
 
         <StackLayout Padding="20">
             <!--Bottom-->
-            <Button Text="Forget password" BackgroundColor="Aqua" TextColor="Red" Clicked="OnForgetPasswordClicked"/>
+             <Button Text="Sign In" Margin="10" Clicked="OnSignInClicked" Background="#CE6C86"/>
         </StackLayout>
 
     </StackLayout>
