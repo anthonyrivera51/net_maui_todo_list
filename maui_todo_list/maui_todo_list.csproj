@@ -46,10 +46,10 @@
 		<PackageReference Include="HotChocolate" Version="13.9.5" />
 		<PackageReference Include="GraphQL.Client" Version="6.1.0" />
 		<PackageReference Include="GraphQL.Client.Abstractions" Version="6.1.0" />
-		<PackageReference Include="StrawberryShake" Version="12.0.1" />
 		<PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="6.1.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="6.1.0" />
+		<PackageReference Include="Mopups" Version="1.1.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Pages\" />
@@ -61,8 +61,6 @@
 		<None Remove="Conexion\API\" />
 		<None Remove="Model\" />
 		<None Remove="Utils\" />
-		<None Remove="Resources\Images\🦆 icon _lock_.png" />
-		<None Remove="Resources\Images\🦆 icon _envelope_.png" />
 		<None Remove="Resources\Images\icon_envelope_.png" />
 		<None Remove="Resources\Images\icon_lock_.png" />
 		<None Remove="Resources\Fonts\fa-solid-900.ttf" />
@@ -73,6 +71,7 @@
 		<None Remove="Resources\Images\error.png" />
 		<None Remove="Resources\Images\agregar-usuario.png" />
 		<None Remove="ViewModels\" />
+		<None Remove="Pages\Popup\" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Pages\" />
@@ -85,6 +84,7 @@
 		<Folder Include="Model\" />
 		<Folder Include="Utils\" />
 		<Folder Include="ViewModels\" />
+		<Folder Include="Pages\Popup\" />
 	</ItemGroup>
 	<ItemGroup>
 		<BundleResource Include="Resources\Images\icon_envelope.png" />

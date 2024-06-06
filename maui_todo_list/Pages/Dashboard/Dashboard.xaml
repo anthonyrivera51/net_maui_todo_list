@@ -34,21 +34,21 @@
         </Grid>
          <Grid Grid.Row="1" BackgroundColor="DarkCyan">
              <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Start" BackgroundColor="#49c175">
-                <!--<CollectionView  VerticalScrollBarVisibility="Never"
+                <CollectionView  VerticalScrollBarVisibility="Never"
                                     HeightRequest="{OnPlatform Android='340', iOS='515'}" 
-                                    BackgroundColor="White" 
-                                    ItemsSource="{Binding items}">
+                                    BackgroundColor="White"
+                                    x:Name="listVisitedPending"
+                                    SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                                 <DataTemplate>  
                                 <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="120,*,Auto" Padding="30,20,20,10" BackgroundColor="White">
-                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding By}" Grid.ColumnSpan="2" FontSize="13" Padding="10,10,0,0" TextColor="#9a9bab" FontAttributes="Bold"/>
-                                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Title}" MaxLines="3" Padding="10,0,0,10" FontSize="17" FontAttributes="Bold"/>
-                                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Price}" Padding="10,0,0,0" FontAttributes="Bold" FontSize="20" TextColor="#49c175"/> 
-                                            <Button Grid.Row="1" Grid.Column="3" FontSize="13" VerticalOptions="Center" Margin="0,0,10,0" BackgroundColor="#0c0e34" Text="{Binding Quantity}" TextColor="White" HorizontalOptions="End" HeightRequest="40" WidthRequest="40" CornerRadius="20" />
-                                    </Grid>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding client.name}" Grid.ColumnSpan="2" FontSize="13" Padding="10,10,0,0" TextColor="#9a9bab" FontAttributes="Bold"/>
+                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding dateVisit}" MaxLines="3" Padding="10,0,0,10" FontSize="17" FontAttributes="Bold"/>
+                                        <Button Grid.Row="1" Grid.Column="3" FontSize="13" VerticalOptions="Center" Margin="0,0,10,0" BackgroundColor="#0c0e34" TextColor="White" HorizontalOptions="End" HeightRequest="40" WidthRequest="40" CornerRadius="20" x:Name="btnListButton" Clicked="btnListButton_Clicked" />
+                                </Grid>
                                 </DataTemplate>
                     </CollectionView.ItemTemplate>
-                </CollectionView>-->
+                </CollectionView>
              </StackLayout> 
          </Grid>
 

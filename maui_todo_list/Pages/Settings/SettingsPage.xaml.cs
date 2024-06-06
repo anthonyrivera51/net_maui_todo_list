@@ -41,6 +41,13 @@ public partial class SettingsPage : ContentPage
         VisitedId = "";
     }
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing(); // do the usual stuff OnAppearing does
+        NavigationPage.SetHasNavigationBar(this, true); //get your navbar back
+        NavigationPage.SetHasBackButton(this, true); //get your back button back
+    }
+
     public async void GetClients()
     {
         try
@@ -215,5 +222,10 @@ public partial class SettingsPage : ContentPage
     void switchedIsProyect_Toggled(System.Object sender, Microsoft.Maui.Controls.ToggledEventArgs e)
     {
         isToogle = switchedIsProyect.IsToggled;
+    }
+
+    async void Button_Clicked_1(System.Object sender, System.EventArgs e)
+    {
+        await Navigation.PopModalAsync();
     }
 }

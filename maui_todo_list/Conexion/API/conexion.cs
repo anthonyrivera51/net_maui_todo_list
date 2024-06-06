@@ -3,7 +3,6 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.Newtonsoft;
-using StrawberryShake;
 
 namespace maui_todo_list.Conexion.API
 {
